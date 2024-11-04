@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3001:3000"  # Mapea el puerto 3001 en el host al puerto 3000 en el contenedor
+    volumes:
+      - ./backend:/usr/src/app
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"  # Mapea el puerto 3000 en el host al puerto 3000 en el contenedor
+    volumes:
+      - ./frontend:/usr/src/app
+
+networks:
+  default:
+    driver: bridge
